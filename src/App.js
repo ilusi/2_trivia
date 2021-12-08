@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react"
-import Cover from "./components/cover"
-import Quiz from "./components/quiz"
+import Cover from "./components/Cover"
+import Form from "./components/Form"
 import dataSet from "./data"
 import { nanoid } from "nanoid"
 
@@ -14,38 +14,6 @@ function App() {
   const [data, setData] = React.useState([]);
   const [score, setScore] = React.useState(0)
   const [formError, setFormError] = React.useState([])
-  const quiz = data.map(item => {
-    return (
-      <Quiz
-        key={item.id}
-        id={item.id}
-        handleChange={handleChange}
-        question={item.question}
-        answer={item.answer}
-        choices={item.choices}
-        correctAnswer={item.correct_answer}
-        showAnswer={BTN_PLAY_AGAIN === btnState}
-      />
-    )
-  });
-  const Form = () => {
-    const btnLabel = capitalize(btnState)
-
-    return (
-      <form onSubmit={handleSubmit}>
-        {quiz}
-        {
-          BTN_PLAY_AGAIN === btnState
-          && <p>You scored {score}/{data.length} correct answers</p>
-        }
-        {
-          (formError[0] < 0) &&
-          <p>Please answer all of the questions before submitting</p>
-        }
-        <button>{btnLabel}</button>
-      </form >
-    )
-  }
 
   React.useEffect(() => {
     console.log("Hit API")
@@ -114,11 +82,20 @@ function App() {
       {
         BTN_START_QUIZ === btnState
           ? <Cover
-            toggleStart={toggleBtn}
             btnState={btnState}
             capitalize={capitalize}
+            toggleStart={toggleBtn}
           />
-          : <Form />
+          : <Form
+            btnState={btnState}
+            capitalize={capitalize}
+            data={data}
+            formError={formError}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            score={score}
+            showAnswer={BTN_PLAY_AGAIN === btnState}
+          />
       }
     </div>
   );
