@@ -2,7 +2,6 @@ import './App.css';
 import React from "react"
 import Cover from "./components/Cover"
 import Form from "./components/Form"
-import dataSet from "./data"
 import { nanoid } from "nanoid"
 
 // Different buttons for 3 pages total in this Trivia.
@@ -16,23 +15,29 @@ function App() {
   const [data, setData] = React.useState([]);
   const [score, setScore] = React.useState(0)
   const [formError, setFormError] = React.useState([])
+  const [playAgain, setPlayAgain] = React.useState(false)
 
   // Fetch Trivia data.
   React.useEffect(() => {
-    console.log("Hit API")
-    // fetch('https://opentdb.com/api.php?amount=5&category=17&difficulty=easy')
-    //   .then(res => res.json())
-    //   .then(data => setData(data.results))
-    setData(dataSet.results.map(quiz => {
-      // Collect answer choices and randomize their order.
-      const choices = [...quiz.incorrect_answers, quiz.correct_answer]
-        .map(answer => ({ answer, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ answer }) => answer)
+    console.log('Getting Trivia data...')
+    async function getTrivia() {
+      const url = 'https://opentdb.com/api.php?amount=5&category=17&difficulty=easy'
+      const res = await fetch(url)
+      const dataSet = await res.json()
 
-      return { ...quiz, choices: choices, id: nanoid() }
-    }))
-  }, [])
+      setData(dataSet.results.map(quiz => {
+        // Collect answer choices and randomize their order.
+        const choices = [...quiz.incorrect_answers, quiz.correct_answer]
+          .map(answer => ({ answer, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ answer }) => answer)
+
+        return { ...quiz, choices: choices, id: nanoid() }
+      }))
+    }
+
+    getTrivia()
+  }, [playAgain])
 
   // toggleBtn acts as the navigation.
   function toggleBtn() {
@@ -43,6 +48,7 @@ function App() {
     } else {
       setBtnState(BTN_START_QUIZ)
       clearAnswers()
+      setPlayAgain(!playAgain)
     }
   }
 

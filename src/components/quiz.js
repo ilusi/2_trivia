@@ -1,5 +1,3 @@
-import React from "react"
-
 export default function Quiz(props) {
    const choices = props.choices.map((choice, idx) => {
       const styles = {
