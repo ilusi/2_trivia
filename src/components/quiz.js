@@ -1,8 +1,6 @@
 import React from "react"
 
 export default function Quiz(props) {
-   // console.log("props: ", props)
-
    const choices = props.choices.map((choice, idx) => {
       const styles = {
          // Highlight correct answer on the Check Answer page.
