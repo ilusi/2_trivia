@@ -46,13 +46,13 @@
    color: #F5F7FB;
 }
 
-.image-blob-top-right {
+.image-blob--top-right {
    position: absolute;
    top: 0;
    right: 0;
 }
 
-.image-blob-bottom-left {
+.image-blob--bottom-left {
    position: absolute;
    bottom: 0;
    left: 0;

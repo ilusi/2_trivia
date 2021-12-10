@@ -106,7 +106,7 @@ function App() {
       <img
         src="/blobs-yellow.png"
         alt=""
-        className="image-blob-top-right"
+        className="image-blob--top-right"
       />
       {
         BTN_START_QUIZ === btnState
@@ -129,7 +129,7 @@ function App() {
       <img
         src="/blobs-blue.png"
         alt=""
-        className="image-blob-bottom-left"
+        className="image-blob--bottom-left"
       />
     </div>
   );
