@@ -21,7 +21,6 @@ export default function Quiz(props) {
       )
    });
 
-
    return (
       <fieldset>
          <p>{props.question}</p>

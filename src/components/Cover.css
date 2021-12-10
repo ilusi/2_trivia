@@ -1,0 +1,59 @@
+.cover {
+   margin-top: 218px;
+   max-width: 412px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   align-content: space-around;
+}
+
+.cover>h1 {
+   font-family: Karla;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 31.25px;
+   line-height: 37px;
+   text-align: center;
+   color: #293264;
+}
+
+.cover>p {
+   margin-top: 7px;
+   font-family: Inter;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 16px;
+   line-height: 19px;
+   text-align: center;
+
+   color: #293264;
+}
+
+.cover>button {
+   margin-top: 29px;
+   width: 193px;
+   height: 52px;
+
+   background: #4D5B9E;
+   border-radius: 15px;
+   font-family: Inter;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 19px;
+   text-align: center;
+
+   color: #F5F7FB;
+}
+
+.image-blob-top-right {
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+
+.image-blob-bottom-left {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+}

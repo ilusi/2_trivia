@@ -1,3 +1,5 @@
+import './Cover.css'
+
 export default function Cover(props) {
    const btnLabel = props.capitalize(props.btnState)
 

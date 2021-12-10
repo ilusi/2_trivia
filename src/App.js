@@ -103,6 +103,11 @@ function App() {
 
   return (
     <div className="App">
+      <img
+        src="/blobs-yellow.png"
+        alt=""
+        className="image-blob-top-right"
+      />
       {
         BTN_START_QUIZ === btnState
           ? <Cover
@@ -121,6 +126,11 @@ function App() {
             showAnswer={BTN_PLAY_AGAIN === btnState}
           />
       }
+      <img
+        src="/blobs-blue.png"
+        alt=""
+        className="image-blob-bottom-left"
+      />
     </div>
   );
 }
