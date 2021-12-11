@@ -1,3 +1,5 @@
+import './Form.css'
+
 export default function Quiz(props) {
    const choices = props.choices.map((choice, idx) => {
       const styles = {
@@ -7,7 +9,11 @@ export default function Quiz(props) {
       }
 
       return (
-         <div key={`${props.id}-${idx}`} style={styles}>
+         <span
+            key={`${props.id}-${idx}`}
+            style={styles}
+            className="form-quiz__span-choices"
+         >
             <input
                type="radio"
                id={`${idx}-${props.id}`}
@@ -17,14 +23,14 @@ export default function Quiz(props) {
                onChange={props.handleChange}
             />
             <label htmlFor={`${idx}-${props.id}`}>{choice}</label>
-         </div>
+         </span>
       )
    });
 
    return (
-      <fieldset>
-         <p>{props.question}</p>
-         {choices}
+      <fieldset className="form-quiz__fieldset">
+         <p className="question">{props.question}</p>
+         <div className="choices">{choices}</div>
       </fieldset>
    )
 }

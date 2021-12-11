@@ -1,4 +1,5 @@
 import Quiz from "./Quiz"
+import './Form.css'
 
 export default function Form(props) {
    const quiz = props.data.map(item => {
@@ -17,7 +18,7 @@ export default function Form(props) {
    });
 
    return (
-      <form onSubmit={props.handleSubmit} className="form-">
+      <form onSubmit={props.handleSubmit} className="form-quiz">
          {quiz}
          {
             props.showAnswer
@@ -27,7 +28,9 @@ export default function Form(props) {
             (props.formError[0] < 0)
             && <p>Please answer all of the questions before submitting</p>
          }
-         <button>{props.capitalize(props.btnState)}</button>
+         <div className="form-quiz__button">
+            <button>{props.capitalize(props.btnState)}</button>
+         </div>
       </form >
    )
 }
