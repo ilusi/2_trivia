@@ -1,6 +1,8 @@
 import './Form.css'
 
 export default function Quiz(props) {
+   const doc = new DOMParser().parseFromString(props.question, "text/html");
+   const question = doc.documentElement.textContent;
    const choices = props.choices.map((choice, idx) => {
       let bgColor = ''
 
@@ -39,7 +41,7 @@ export default function Quiz(props) {
 
    return (
       <fieldset className="form__fieldset">
-         <p className="form__paragraph">{props.question}</p>
+         <p className="form__paragraph">{question}</p>
          <ul className="form__list">{choices}</ul>
       </fieldset>
    )
