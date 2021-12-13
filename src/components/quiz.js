@@ -2,17 +2,27 @@ import './Form.css'
 
 export default function Quiz(props) {
    const choices = props.choices.map((choice, idx) => {
-      const styles = {
-         // Highlight correct answer on the Check Answer page.
-         background: props.showAnswer && (choice === props.correctAnswer)
-            ? "#0f0" : "#fff"
+      let bgColor = ''
+
+      // Styling - Highlight in/correct answer on the Quiz/Check Answer page.
+      if (props.showAnswer) {
+         if (choice === props.answer) {
+            bgColor = '#94D7A2' // green
+         } else if (choice === props.correctAnswer) {
+            bgColor = '#F8BCBC' // pink
+         } else {
+            bgColor = '#fff'
+         }
+      } else if (choice === props.answer) {
+         bgColor = '#D6DBF5' // purple
       }
 
+      const styles = { backgroundColor: bgColor }
+
       return (
-         <span
+         <li
             key={`${props.id}-${idx}`}
             style={styles}
-            className="form-quiz__span-choices"
          >
             <input
                type="radio"
@@ -23,14 +33,14 @@ export default function Quiz(props) {
                onChange={props.handleChange}
             />
             <label htmlFor={`${idx}-${props.id}`}>{choice}</label>
-         </span>
+         </li>
       )
    });
 
    return (
-      <fieldset className="form-quiz__fieldset">
-         <p className="question">{props.question}</p>
-         <div className="choices">{choices}</div>
+      <fieldset className="form__fieldset">
+         <p className="form__paragraph">{props.question}</p>
+         <ul className="form__list">{choices}</ul>
       </fieldset>
    )
 }

@@ -18,17 +18,19 @@ export default function Form(props) {
    });
 
    return (
-      <form onSubmit={props.handleSubmit} className="form-quiz">
+      <form onSubmit={props.handleSubmit} className="form">
          {quiz}
-         {
-            props.showAnswer
-            && <p>You scored {props.score}/{props.data.length} correct answers</p>
-         }
-         {
-            (props.formError[0] < 0)
-            && <p>Please answer all of the questions before submitting</p>
-         }
-         <div className="form-quiz__button">
+         <div className="form__submit-button-container">
+            {
+               props.showAnswer
+               && <p>You scored {props.score}/{props.data.length} correct answers</p>
+            }
+            {
+               (props.formError[0] < 0)
+               && <p className="form__paragraph-error">
+                  Please answer all of the questions before submitting
+               </p>
+            }
             <button>{props.capitalize(props.btnState)}</button>
          </div>
       </form >
