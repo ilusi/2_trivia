@@ -1,6 +1,6 @@
 # Trivia App using React (non-class component)
 
-Trivia questions are provided by [Open Trivia DB API)[https://opentdb.com/)
+Trivia questions are provided by [Open Trivia DB API](https://opentdb.com/)
 
 ### `yarn start`
 
